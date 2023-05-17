@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 
 
 
+
+
 path = os.getcwd()
 files = os.listdir(path +'\Excel_files')
 
@@ -24,7 +26,6 @@ for name, sheet in sheets_dict.items():
     sheet = sheet.reindex(idx, fill_value=None)
 
     sheet['Price'].interpolate(inplace=True) # use interpolate instead of forward fill to reduce unecessary variance between datapoints
-    #sheet['Last Px'].ffill()
     line_plot.line_plot(sheet['Price'], name)
     sheet.to_csv(file_path, encoding='utf-8', index=False)
 
